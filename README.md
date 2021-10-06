@@ -3,7 +3,7 @@ Moore.io UVM Logging Library
 
 ## [Home Page](https://datum-technology-corporation.github.io/uvml_logs/)
 
-# IP(s)
+# IP
 ## DV
 * uvml_logs
 
