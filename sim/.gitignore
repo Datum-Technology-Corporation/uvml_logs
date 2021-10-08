@@ -1,9 +1,0 @@
-/*.log
-/*.pb
-/xsim.dir/*/*.*
-/xsim.dir/*.*
-/xsim.dir/*
-*.jou
-/*.wdb
-/out/
-results/*
