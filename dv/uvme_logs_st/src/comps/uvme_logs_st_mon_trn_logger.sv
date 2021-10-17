@@ -52,6 +52,7 @@ endfunction : new
 
 function void uvme_logs_st_mon_trn_logger_c::write(uvme_logs_st_mon_trn_c t);
    
+   `uvm_info("MON_TRN_LOGGER", $sformatf("Printing transaction to file:\n%s", t.sprint()), UVM_LOW)
    fwrite($sformatf("     %0t     | %0d | %s | %b", $realtime(), t.number, t.enum_val.name(), t.raw_data));
    
 endfunction : write
@@ -59,6 +60,7 @@ endfunction : write
 
 function void uvme_logs_st_mon_trn_logger_c::print_header();
    
+   `uvm_info("MON_TRN_LOGGER", "Printing transation log header to file", UVM_LOW)
    fwrite("----------------------------");
    fwrite("     TIME     | DEC | ENUM | RAW DATA");
    fwrite("----------------------------");

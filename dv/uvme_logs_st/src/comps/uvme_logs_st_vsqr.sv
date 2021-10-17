@@ -101,7 +101,7 @@ task uvme_logs_st_vsqr_c::run_phase(uvm_phase phase);
    fork
       begin
          forever begin
-            mon_trn_sequencer.get(mon_trn);
+            mon_trn_sequencer.get_next_item(mon_trn);
             mon_trn_ap.write(mon_trn);
             mon_trn_sequencer.item_done();
          end
@@ -109,7 +109,7 @@ task uvme_logs_st_vsqr_c::run_phase(uvm_phase phase);
       
       begin
          forever begin
-            seq_item_sequencer.get(seq_item);
+            seq_item_sequencer.get_next_item(seq_item);
             seq_item_ap.write(seq_item);
             seq_item_sequencer.item_done();
          end

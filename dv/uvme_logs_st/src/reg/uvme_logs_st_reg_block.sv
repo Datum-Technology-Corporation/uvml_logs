@@ -90,6 +90,7 @@ function void uvme_logs_st_reg_block_c::connect();
    
    create_reg_map ();
    add_regs_to_map();
+   lock_model     ();
    
 endfunction : connect
 

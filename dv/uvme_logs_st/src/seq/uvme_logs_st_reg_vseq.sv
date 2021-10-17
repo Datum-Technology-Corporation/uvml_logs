@@ -64,7 +64,8 @@ task uvme_logs_st_reg_vseq_c::body();
    cfg.reg_block.get_registers(my_regs);
    my_regs.shuffle();
    for (int unsigned ii=0; ii<num_reg_access; ii++) begin
-            current_reg = my_regs.pop_front();
+      current_reg = my_regs.pop_front();
+      `uvm_info("TRAFFIC_VSEQ", $sformatf("Performing access #%0d of %0d:\n%s", ii+1, num_reg_access, current_reg.sprint()), UVM_LOW)
       randcase
          2: begin
             current_reg.read(status, value);
@@ -73,6 +74,7 @@ task uvme_logs_st_reg_vseq_c::body();
             current_reg.write(status, $urandom());
          end
       endcase
+      #100ns;
    end
    
 endtask : body

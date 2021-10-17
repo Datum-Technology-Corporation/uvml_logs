@@ -68,7 +68,9 @@ task uvme_logs_st_traffic_vseq_c::body();
             1: mon_trn.raw_data[ii] = 1'bX;
          endcase
       end
+      `uvm_info("TRAFFIC_VSEQ", $sformatf("Sending item #%0d of %0d:\n%s", ii+1, num_trn, mon_trn.sprint()), UVM_LOW)
       `uvm_rand_send(mon_trn)
+      #100ns;
    end
    
 endtask : body
