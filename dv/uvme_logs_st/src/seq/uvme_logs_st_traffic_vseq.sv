@@ -17,7 +17,7 @@
 /**
  * TODO Describe uvme_logs_st_traffic_vseq_c
  */
-class uvme_logs_st_traffic_vseq_c extends uvme_logs_st_base_seq_c;
+class uvme_logs_st_traffic_vseq_c extends uvme_logs_st_base_vseq_c;
    
    // Fields
    rand int unsigned  num_trn; ///< 

@@ -153,11 +153,6 @@ class uvmt_logs_st_base_test_c extends uvml_test_c;
     */
    extern task start_clk();
    
-   /**
-    * Fatals out after simulation_timeout has elapsed.
-    */
-   extern task simulation_timeout();
-   
 endclass : uvmt_logs_st_base_test_c
 
 
@@ -199,7 +194,6 @@ task uvmt_logs_st_base_test_c::run_phase(uvm_phase phase);
    super.run_phase(phase);
    
    start_clk();
-   simulation_timeout();
    
 endtask : run_phase
 
@@ -245,10 +239,10 @@ endfunction : phase_ended
 function void uvmt_logs_st_base_test_c::retrieve_clknrst_gen_vif();
    
    if (!uvm_config_db#(virtual uvmt_logs_st_clknrst_gen_if)::get(this, "", "clknrst_gen_vif", clknrst_gen_vif)) begin
-      `uvm_fatal("VIF", $sformatf("Could not find clknrst_gen_vif handle of type %s in uvm_config_db", $typename(clknrst_gen_vif)))
+      `uvm_fatal("TEST", $sformatf("Could not find clknrst_gen_vif handle of type %s in uvm_config_db", $typename(clknrst_gen_vif)))
    end
    else begin
-      `uvm_info("VIF", $sformatf("Found clknrst_gen_vif handle of type %s in uvm_config_db", $typename(clknrst_gen_vif)), UVM_DEBUG)
+      `uvm_info("TEST", $sformatf("Found clknrst_gen_vif handle of type %s in uvm_config_db", $typename(clknrst_gen_vif)), UVM_DEBUG)
    end
    
 endfunction : retrieve_clknrst_gen_vif
@@ -277,6 +271,7 @@ function void uvmt_logs_st_base_test_c::cfg_hrtbt_monitor();
    
    `uvml_hrtbt_set_cfg(startup_timeout , test_cfg.startup_timeout)
    `uvml_hrtbt_set_cfg(heartbeat_period, test_cfg.heartbeat_period)
+   `uvml_watchdog_set_cfg(timeout, test_cfg.simulation_timeout)
    
 endfunction : cfg_hrtbt_monitor
 
@@ -332,18 +327,6 @@ task uvmt_logs_st_base_test_c::start_clk();
    clknrst_gen_vif.start_clk();
    
 endtask : start_clk
-
-
-task uvmt_logs_st_base_test_c::simulation_timeout();
-   
-   fork
-      begin
-         #(test_cfg.simulation_timeout * 1ns);
-         `uvm_fatal("TIMEOUT", $sformatf("Global timeout after %0dns. Heartbeat list:\n%s", test_cfg.simulation_timeout, uvml_default_hrtbt.print_comp_names()))
-      end
-   join_none
-   
-endtask : simulation_timeout
 
 
 `endif // __UVMT_LOGS_ST_BASE_TEST_SV__

@@ -14,6 +14,9 @@
 `define __UVME_LOGS_ST_REG_ADAPTER_SV__
 
 
+typedef class uvme_logs_st_seq_item_c;
+
+
 /**
  * Object that converts between abstract register operations (UVM) and the mock sequence item for this env.
  */
@@ -50,7 +53,7 @@ endfunction : new
 
 function uvm_sequence_item uvme_logs_st_reg_adapter_c::reg2bus(const ref uvm_reg_bus_op rw);
    
-   uvme_logs_st_seq_item_c  seq_item = uvme_logs_st_mstr_seq_item_c::type_id::create("seq_item");
+   uvme_logs_st_seq_item_c  seq_item = uvme_logs_st_seq_item_c::type_id::create("seq_item");
    
    seq_item.we      = (rw.kind == UVM_WRITE);
    seq_item.address = rw.addr;

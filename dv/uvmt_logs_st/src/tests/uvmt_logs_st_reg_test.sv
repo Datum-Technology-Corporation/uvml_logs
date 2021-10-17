@@ -32,6 +32,16 @@ class uvmt_logs_st_reg_test_c extends uvmt_logs_st_base_test_c;
    extern function new(string name="uvmt_logs_st_reg_test", uvm_component parent=null);
    
    /**
+    * TODO Describe uvmt_logs_st_reg_test_c::build_phase()
+    */
+   extern virtual function void build_phase(uvm_phase phase);
+   
+   /**
+    * TODO Describe uvmt_logs_st_reg_test_c::connect_phase()
+    */
+   extern virtual function void connect_phase(uvm_phase phase);
+   
+   /**
     * Runs reg_vseq on vsequencer.
     */
    extern virtual task main_phase(uvm_phase phase);
@@ -46,6 +56,24 @@ function uvmt_logs_st_reg_test_c::new(string name="uvmt_logs_st_reg_test", uvm_c
    reg_cbs = new("reg_cbs");
    
 endfunction : new
+
+
+function void uvmt_logs_st_reg_test_c::build_phase(uvm_phase phase);
+   
+   super.build_phase(phase);
+   
+   reg_cbs = uvml_logs_reg_logger_cbs_c::type_id::create("reg_cbs");
+  
+endfunction : build_phase
+
+
+function void uvmt_logs_st_reg_test_c::connect_phase(uvm_phase phase);
+   
+   super.connect_phase(phase);
+   
+   uvm_reg_cb::add(null, reg_cbs);
+   
+endfunction : connect_phase
 
 
 task uvmt_logs_st_reg_test_c::main_phase(uvm_phase phase);

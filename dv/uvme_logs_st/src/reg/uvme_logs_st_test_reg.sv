@@ -53,7 +53,7 @@ endfunction : new
 
 function void uvme_logs_st_test_reg_c::build();
    
-   field_a = uvml_ral_reg_field_c::type_id::create("field_a");
+   field_a = uvm_reg_field::type_id::create("field_a");
    field_a.configure(
       .parent                 (this),
       .size                   (  16),
@@ -66,7 +66,7 @@ function void uvme_logs_st_test_reg_c::build();
       .individually_accessible(   1)
    );
    
-   field_b = uvml_ral_reg_field_c::type_id::create("field_b");
+   field_b = uvm_reg_field::type_id::create("field_b");
    field_b.configure(
       .parent                 (this),
       .size                   (   1),
@@ -79,7 +79,7 @@ function void uvme_logs_st_test_reg_c::build();
       .individually_accessible(   1)
    );
    
-   field_c = uvml_ral_reg_field_c::type_id::create("field_c");
+   field_c = uvm_reg_field::type_id::create("field_c");
    field_c.configure(
       .parent                 (this),
       .size                   (   8),

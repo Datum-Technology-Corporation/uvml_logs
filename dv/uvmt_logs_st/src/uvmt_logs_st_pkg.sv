@@ -26,7 +26,7 @@ timeunit       1ns;
 timeprecision  1ps;
 
 // Interface(s)
-`include "uvmt_logs_clknrst_gen_if.sv"
+`include "uvmt_logs_st_clknrst_gen_if.sv"
 
 
 /**

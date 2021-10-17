@@ -29,7 +29,7 @@ class uvme_logs_st_reg_block_c extends uvm_reg_block;
    
    
    `uvm_object_utils_begin(uvme_logs_st_reg_block_c)
-      `uvm_field_array_object(test_regs, UVM_DEFAULT)
+      `uvm_field_sarray_object(test_regs, UVM_DEFAULT)
    `uvm_object_utils_end
    
    
@@ -116,7 +116,7 @@ function void uvme_logs_st_reg_block_c::create_reg_map();
    
    default_map = create_map(
       .name     ("default_map"),
-      .base_addr(base_address),
+      .base_addr(0),
       .n_bytes  (4),
       .endian   (UVM_LITTLE_ENDIAN)
    );

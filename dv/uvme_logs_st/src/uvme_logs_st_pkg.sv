@@ -46,7 +46,7 @@ package uvme_logs_st_pkg;
    `include "uvme_logs_st_cfg.sv"
    `include "uvme_logs_st_cntxt.sv"
    `include "uvme_logs_st_mon_trn.sv"
-   `inlclue "uvme_logs_st_seq_item.sv"
+   `include "uvme_logs_st_seq_item.sv"
    
    // Environment components
    `include "uvme_logs_st_cov_model.sv"

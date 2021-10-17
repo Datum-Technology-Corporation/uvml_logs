@@ -19,7 +19,7 @@
  */
 class uvmt_logs_st_traffic_test_c extends uvmt_logs_st_base_test_c;
    
-   rand uvme_uvmt_logs_st_traffic_vseq_c  traffic_vseq;
+   rand uvme_logs_st_traffic_vseq_c  traffic_vseq;
    
    
    `uvm_component_utils(uvmt_logs_st_traffic_test_c)
@@ -41,7 +41,7 @@ endclass : uvmt_logs_st_traffic_test_c
 function uvmt_logs_st_traffic_test_c::new(string name="uvmt_logs_st_traffic_test", uvm_component parent=null);
    
    super.new(name, parent);
-   traffic_vseq = uvme_uvmt_logs_st_traffic_vseq_c::type_id::create("traffic_vseq");
+   traffic_vseq = uvme_logs_st_traffic_vseq_c::type_id::create("traffic_vseq");
    
 endfunction : new
 

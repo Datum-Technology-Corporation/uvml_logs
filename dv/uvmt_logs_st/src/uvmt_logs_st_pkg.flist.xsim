@@ -19,10 +19,10 @@
 -f ${DV_UVME_LOGS_ST_SRC_PATH}/uvme_logs_st_pkg.flist.xsim
 
 // Logging Utilities test bench Directories
-+incdir+${DV_UVMT_LOGS_ST_SRC_PATH}
-+incdir+${DV_UVMT_LOGS_ST_SRC_PATH}/seq
-+incdir+${DV_UVMT_LOGS_ST_SRC_PATH}/tb
-+incdir+${DV_UVMT_LOGS_ST_SRC_PATH}/tests
+-i ${DV_UVMT_LOGS_ST_SRC_PATH}
+-i ${DV_UVMT_LOGS_ST_SRC_PATH}/seq
+-i ${DV_UVMT_LOGS_ST_SRC_PATH}/tb
+-i ${DV_UVMT_LOGS_ST_SRC_PATH}/tests
 
 // Logging Utilities tests (includes constants/macros/types meant for test bench)
 ${DV_UVMT_LOGS_ST_SRC_PATH}/uvmt_logs_st_pkg.sv

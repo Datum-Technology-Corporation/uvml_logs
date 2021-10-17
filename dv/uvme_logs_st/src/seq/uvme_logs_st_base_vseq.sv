@@ -25,8 +25,8 @@ class uvme_logs_st_base_vseq_c extends uvm_sequence#(
 );
    
    // Environment handles
-   uvme_logs_st_cfg_c    cfg;
-   uvme_logs_st_cntxt_c  cntxt;
+   uvme_logs_st_cfg_c    cfg  ; ///< 
+   uvme_logs_st_cntxt_c  cntxt; ///< 
    
    
    `uvm_object_utils(uvme_logs_st_base_vseq_c)
@@ -46,9 +46,6 @@ class uvme_logs_st_base_vseq_c extends uvm_sequence#(
 endclass : uvme_logs_st_base_vseq_c
 
 
-`pragma protect begin
-
-
 function uvme_logs_st_base_vseq_c::new(string name="uvme_logs_st_base_vseq");
    
    super.new(name);
@@ -62,9 +59,6 @@ task uvme_logs_st_base_vseq_c::pre_start();
    cntxt = p_sequencer.cntxt;
    
 endtask : pre_start
-
-
-`pragma protect end
 
 
 `endif // __UVME_LOGS_ST_BASE_VSEQ_SV__

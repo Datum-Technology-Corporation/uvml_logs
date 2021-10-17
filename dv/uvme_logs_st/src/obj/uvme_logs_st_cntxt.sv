@@ -20,19 +20,12 @@
  */
 class uvme_logs_st_cntxt_c extends uvml_cntxt_c;
    
-   // Agent context handles
-   uvma_logs_cntxt_c  abc_cntxt;
-   uvma_logs_cntxt_c  def_cntxt;
-   
    // Events
    uvm_event  sample_cfg_e  ;
    uvm_event  sample_cntxt_e;
    
    
    `uvm_object_utils_begin(uvme_logs_st_cntxt_c)
-      `uvm_field_object(abc_cntxt, UVM_DEFAULT)
-      `uvm_field_object(def_cntxt, UVM_DEFAULT)
-      
       `uvm_field_event(sample_cfg_e  , UVM_DEFAULT)
       `uvm_field_event(sample_cntxt_e, UVM_DEFAULT)
    `uvm_object_utils_end
@@ -54,10 +47,6 @@ endclass : uvme_logs_st_cntxt_c
 function uvme_logs_st_cntxt_c::new(string name="uvme_logs_st_cntxt");
    
    super.new(name);
-   
-   abc_cntxt = uvma_logs_cntxt_c::type_id::create("abc_cntxt");
-   def_cntxt = uvma_logs_cntxt_c::type_id::create("def_cntxt");
-   
    sample_cfg_e   = new("sample_cfg_e"  );
    sample_cntxt_e = new("sample_cntxt_e");
    

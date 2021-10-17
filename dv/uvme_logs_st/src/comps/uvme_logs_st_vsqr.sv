@@ -27,12 +27,12 @@ class uvme_logs_st_vsqr_c extends uvml_vsqr_c #(
    uvme_logs_st_cntxt_c  cntxt; ///< 
    
    // Sequencer handles
-   uvme_logs_st_sqr_c  mon_trn_sequencer ; ///< 
-   uvme_logs_st_sqr_c  seq_item_sequencer; ///< 
+   uvme_logs_st_mon_trn_sqr_c   mon_trn_sequencer ; ///< 
+   uvme_logs_st_seq_item_sqr_c  seq_item_sequencer; ///< 
    
    // TLM
-   uvma_analysis_port #(uvme_logs_st_mon_trn_c )  mon_trn_ap ;
-   uvma_analysis_port #(uvme_logs_st_seq_item_c)  seq_item_ap;
+   uvm_analysis_port #(uvme_logs_st_mon_trn_c )  mon_trn_ap ;
+   uvm_analysis_port #(uvme_logs_st_seq_item_c)  seq_item_ap;
    
    
    `uvm_component_utils_begin(uvme_logs_st_vsqr_c)
@@ -82,8 +82,8 @@ function void uvme_logs_st_vsqr_c::build_phase(uvm_phase phase);
    end
    uvm_config_db#(uvme_logs_st_cntxt_c)::set(this, "*", "cntxt", cntxt);
    
-   mon_trn_sequencer  = uvme_logs_st_sqr_c::type_id::create("mon_trn_sequencer" , this);
-   seq_item_sequencer = uvme_logs_st_sqr_c::type_id::create("seq_item_sequencer", this);
+   mon_trn_sequencer  = uvme_logs_st_mon_trn_sqr_c ::type_id::create("mon_trn_sequencer" , this);
+   seq_item_sequencer = uvme_logs_st_seq_item_sqr_c::type_id::create("seq_item_sequencer", this);
    
    mon_trn_ap  = new("mon_trn_ap" , this);
    seq_item_ap = new("seq_item_ap", this);
@@ -99,7 +99,7 @@ task uvme_logs_st_vsqr_c::run_phase(uvm_phase phase);
    super.run_phase(phase);
    
    fork
-      begin : mon_trn
+      begin
          forever begin
             mon_trn_sequencer.get(mon_trn);
             mon_trn_ap.write(mon_trn);
@@ -107,7 +107,7 @@ task uvme_logs_st_vsqr_c::run_phase(uvm_phase phase);
          end
       end
       
-      begin : seq_item
+      begin
          forever begin
             seq_item_sequencer.get(seq_item);
             seq_item_ap.write(seq_item);

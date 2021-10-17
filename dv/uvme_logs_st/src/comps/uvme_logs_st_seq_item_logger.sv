@@ -33,7 +33,7 @@ class uvme_logs_st_seq_item_logger_c extends uvml_logs_seq_item_logger_c #(
    /**
     * Writes contents of t to disk
     */
-   extern virtual function void write(uvme_logs_st_mon_trn_c t);
+   extern virtual function void write(uvme_logs_st_seq_item_c t);
    
    /**
     * Writes log header to disk
@@ -54,7 +54,7 @@ function void uvme_logs_st_seq_item_logger_c::write(uvme_logs_st_seq_item_c t);
    
    string  access  = t.we ? "  W" : "R  ";
    string  address = $sformatf("%h", t.address);
-   string  data    = $sformatf("%h", t.data);
+   string  data    = t.we ? $sformatf("%h", t.wdata) : $sformatf("%h", t.rdata);
    
    fwrite($sformatf("     %0t     | %s | %s | %s", $realtime(), access, address, data));
    

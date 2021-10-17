@@ -20,14 +20,16 @@
 class uvme_logs_st_cov_model_c extends uvm_component;
    
    // Coverage targets
-   uvme_logs_st_cfg_c    cfg;
-   uvme_logs_st_cntxt_c  cntxt;
-   uvma_logs_seq_item_c  seq_item;
-   uvma_logs_mon_trn_c   mon_trn;
+   uvme_logs_st_cfg_c       cfg     ; ///< 
+   uvme_logs_st_cntxt_c     cntxt   ; ///< 
+   uvme_logs_st_seq_item_c  seq_item; ///< 
+   uvme_logs_st_mon_trn_c   mon_trn ; ///< 
    
    // TLM
-   uvm_analysis_export  #(uvma_logs_seq_item_c)  seq_item_export;
-   uvm_analysis_export  #(uvma_logs_mon_trn_c )  mon_trn_export ;
+   uvm_analysis_export   #(uvme_logs_st_seq_item_c)  seq_item_export; ///< 
+   uvm_analysis_export   #(uvme_logs_st_mon_trn_c )  mon_trn_export ; ///< 
+   uvm_tlm_analysis_fifo #(uvme_logs_st_seq_item_c)  seq_item_fifo  ; ///< 
+   uvm_tlm_analysis_fifo #(uvme_logs_st_mon_trn_c )  mon_trn_fifo   ; ///< 
    
    
    `uvm_component_utils_begin(uvme_logs_st_cov_model_c)
