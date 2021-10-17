@@ -39,6 +39,8 @@ alias dvm="${TOOLS_DVM_SRC_PATH}/dvm.py"
 ### DV ###
 # Local
 export DV_UVML_LOGS_SRC_PATH=${PROJECT_DV_DIR}/uvml_logs/src
+export DV_UVME_LOGS_ST_SRC_PATH=${PROJECT_DV_DIR}/uvme_logs_st/src
+export DV_UVMT_LOGS_ST_SRC_PATH=${PROJECT_DV_DIR}/uvmt_logs_st/src
 
 # Imports
 export UVM_HOME=${PROJECT_DV_IMPORTS_DIR}/uvm/src
