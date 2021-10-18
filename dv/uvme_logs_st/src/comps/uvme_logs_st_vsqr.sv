@@ -31,8 +31,8 @@ class uvme_logs_st_vsqr_c extends uvml_vsqr_c #(
    uvme_logs_st_seq_item_sqr_c  seq_item_sequencer; ///< 
    
    // TLM
-   uvm_analysis_port #(uvme_logs_st_mon_trn_c )  mon_trn_ap ;
-   uvm_analysis_port #(uvme_logs_st_seq_item_c)  seq_item_ap;
+   uvm_analysis_port #(uvme_logs_st_mon_trn_c )  mon_trn_ap ; ///< 
+   uvm_analysis_port #(uvme_logs_st_seq_item_c)  seq_item_ap; ///< 
    
    
    `uvm_component_utils_begin(uvme_logs_st_vsqr_c)

@@ -20,6 +20,8 @@
  */
 class uvmt_logs_st_base_test_c extends uvml_test_c;
    
+   virtual uvmt_logs_st_clknrst_gen_if  clknrst_gen_vif; ///< Handle to clock generation interface
+   
    // Objects
    rand uvmt_logs_st_test_cfg_c  test_cfg ; ///< 
    rand uvme_logs_st_cfg_c       env_cfg  ; ///< 
@@ -28,9 +30,6 @@ class uvmt_logs_st_base_test_c extends uvml_test_c;
    // Components
    uvme_logs_st_env_c   env       ; ///< 
    uvme_logs_st_vsqr_c  vsequencer; ///< 
-   
-   // Handle to clock generation interface
-   virtual uvmt_logs_st_clknrst_gen_if  clknrst_gen_vif;
    
    
    `uvm_component_utils_begin(uvmt_logs_st_base_test_c)
@@ -183,7 +182,6 @@ endfunction : build_phase
 function void uvmt_logs_st_base_test_c::connect_phase(uvm_phase phase);
    
    super.connect_phase(phase);
-   
    vsequencer = env.vsequencer;
    
 endfunction : connect_phase
@@ -192,7 +190,6 @@ endfunction : connect_phase
 task uvmt_logs_st_base_test_c::run_phase(uvm_phase phase);
    
    super.run_phase(phase);
-   
    start_clk();
    
 endtask : run_phase
@@ -215,11 +212,8 @@ endtask : reset_phase
 
 function void uvmt_logs_st_base_test_c::phase_started(uvm_phase phase);
    
-   string  phase_name = phase.get_name();
-   
    super.phase_started(phase);
-   
-   print_banner($sformatf("start of %s phase", phase_name));
+   print_banner($sformatf("start of %s phase", phase.get_name()));
    
 endfunction : phase_started
 

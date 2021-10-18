@@ -20,18 +20,18 @@
 class uvme_logs_st_env_c extends uvml_env_c;
    
    // Objects
-   uvme_logs_st_cfg_c      cfg;
-   uvme_logs_st_cntxt_c  cntxt;
+   uvme_logs_st_cfg_c      cfg; ///< 
+   uvme_logs_st_cntxt_c  cntxt; ///< 
    
    // Components
-   uvme_logs_st_cov_model_c        cov_model      ;
-   uvme_logs_st_vsqr_c             vsequencer     ;
-   uvme_logs_st_mon_trn_logger_c   mon_trn_logger ;
-   uvme_logs_st_seq_item_logger_c  seq_item_logger;
+   uvme_logs_st_cov_model_c        cov_model      ; ///< 
+   uvme_logs_st_vsqr_c             vsequencer     ; ///< 
+   uvme_logs_st_mon_trn_logger_c   mon_trn_logger ; ///< 
+   uvme_logs_st_seq_item_logger_c  seq_item_logger; ///< 
    
    // Register Abstraction Layer
-   uvme_logs_st_reg_adapter_c  reg_adapter;
-   uvme_logs_st_reg_block_c    reg_block  ;
+   uvme_logs_st_reg_adapter_c  reg_adapter; ///< 
+   uvme_logs_st_reg_block_c    reg_block  ; ///< 
    
    
    `uvm_component_utils_begin(uvme_logs_st_env_c)
