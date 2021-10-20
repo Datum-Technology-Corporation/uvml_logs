@@ -24,10 +24,12 @@ class uvme_logs_st_env_c extends uvml_env_c;
    uvme_logs_st_cntxt_c  cntxt; ///< 
    
    // Components
-   uvme_logs_st_cov_model_c        cov_model      ; ///< 
-   uvme_logs_st_vsqr_c             vsequencer     ; ///< 
-   uvme_logs_st_mon_trn_logger_c   mon_trn_logger ; ///< 
-   uvme_logs_st_seq_item_logger_c  seq_item_logger; ///< 
+   uvme_logs_st_cov_model_c                                cov_model               ; ///< 
+   uvme_logs_st_vsqr_c                                     vsequencer              ; ///< 
+   uvme_logs_st_mon_trn_logger_c                           mon_trn_logger          ; ///< 
+   uvme_logs_st_seq_item_logger_c                          seq_item_logger         ; ///< 
+   uvml_logs_metadata_logger_c #(uvme_logs_st_mon_trn_c )  mon_trn_metadata_logger ; ///< 
+   uvml_logs_metadata_logger_c #(uvme_logs_st_seq_item_c)  seq_item_metadata_logger; ///< 
    
    // Register Abstraction Layer
    uvme_logs_st_reg_adapter_c  reg_adapter; ///< 
@@ -186,8 +188,10 @@ endfunction: assign_cntxt
 function void uvme_logs_st_env_c::create_env_components();
    
    if (cfg.trn_log_enabled) begin
-      mon_trn_logger  = uvme_logs_st_mon_trn_logger_c ::type_id::create("mon_trn_logger" , this);
-      seq_item_logger = uvme_logs_st_seq_item_logger_c::type_id::create("seq_item_logger", this);
+      mon_trn_logger           = uvme_logs_st_mon_trn_logger_c                         ::type_id::create("mon_trn_logger"          , this);
+      seq_item_logger          = uvme_logs_st_seq_item_logger_c                        ::type_id::create("seq_item_logger"         , this);
+      mon_trn_metadata_logger  = uvml_logs_metadata_logger_c #(uvme_logs_st_mon_trn_c )::type_id::create("mon_trn_metadata_logger" , this);
+      seq_item_metadata_logger = uvml_logs_metadata_logger_c #(uvme_logs_st_seq_item_c)::type_id::create("seq_item_metadata_logger", this);
    end
    
 endfunction: create_env_components
@@ -227,8 +231,13 @@ endfunction: connect_reg_block
 
 function void uvme_logs_st_env_c::connect_trn_loggers();
    
-   vsequencer.mon_trn_ap .connect(mon_trn_logger .analysis_export);
-   vsequencer.seq_item_ap.connect(seq_item_logger.analysis_export);
+   vsequencer.mon_trn_ap .connect(mon_trn_logger          .analysis_export);
+   vsequencer.seq_item_ap.connect(seq_item_logger         .analysis_export);
+   vsequencer.mon_trn_ap .connect(mon_trn_metadata_logger .analysis_export);
+   vsequencer.seq_item_ap.connect(seq_item_metadata_logger.analysis_export);
+   
+   mon_trn_metadata_logger .set_file_name({get_full_name(), ".mon_trn.metadata" });
+   seq_item_metadata_logger.set_file_name({get_full_name(), ".seq_item.metadata"});
    
 endfunction : connect_trn_loggers
 

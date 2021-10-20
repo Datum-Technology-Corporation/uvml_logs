@@ -34,6 +34,7 @@ package uvml_logs_pkg;
    // Components
    `include "uvml_logs_reg_logger_cbs.sv"
    `include "uvml_logs_reg_logger_json_cbs.sv"
+   `include "uvml_logs_metadata_logger.sv"
    `include "uvml_logs_seq_item_logger.sv"
    `include "uvml_logs_mon_trn_logger.sv"
    `include "uvml_logs_rs_json.sv"

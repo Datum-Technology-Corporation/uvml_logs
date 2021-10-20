@@ -41,6 +41,11 @@ class uvme_logs_st_seq_item_c extends uvml_seq_item_c;
     */
    extern function new(string name="uvme_logs_st_seq_item");
    
+   /**
+    * TODO Describe uvme_logs_st_seq_item_c::get_metadata()
+    */
+   extern virtual function uvml_metadata_t get_metadata();
+   
 endclass : uvme_logs_st_seq_item_c
 
 
@@ -49,6 +54,62 @@ function uvme_logs_st_seq_item_c::new(string name="uvme_logs_st_seq_item");
    super.new(name);
    
 endfunction : new
+
+
+function uvml_metadata_t uvme_logs_st_seq_item_c::get_metadata();
+   
+   string we_str    = $sformatf("%d", we);
+   string addr_str  = $sformatf("%h", address);
+   string wdata_str = $sformatf("%h", wdata);
+   string rdata_str = $sformatf("%h", rdata);
+   string be_str    = $sformatf("%b", be);
+   
+   get_metadata["we"] = '{
+      index     : 0,
+      value     : we_str,
+      col_name  : "we",
+      col_width : 4,
+      col_align : UVML_TEXT_ALIGN_RIGHT,
+      data_type : UVML_FIELD_INT
+   };
+   
+   get_metadata["address"] = '{
+      index     : 1,
+      value     : addr_str,
+      col_name  : "addr",
+      col_width :  10,
+      col_align : UVML_TEXT_ALIGN_RIGHT,
+      data_type : UVML_FIELD_INT
+   };
+   
+   get_metadata["wdata"] = '{
+      index     : 2,
+      value     : wdata_str,
+      col_name  : "wdata",
+      col_width :  10,
+      col_align : UVML_TEXT_ALIGN_RIGHT,
+      data_type : UVML_FIELD_INT
+   };
+   
+   get_metadata["rdata"] = '{
+      index     : 3,
+      value     : rdata_str,
+      col_name  : "rdata",
+      col_width :  10,
+      col_align : UVML_TEXT_ALIGN_RIGHT,
+      data_type : UVML_FIELD_INT
+   };
+   
+   get_metadata["be"] = '{
+      index     : 4,
+      value     : be_str,
+      col_name  : "be",
+      col_width :  6,
+      col_align : UVML_TEXT_ALIGN_RIGHT,
+      data_type : UVML_FIELD_INT
+   };
+   
+endfunction : get_metadata
 
 
 `endif // __UVME_LOGS_SEQ_ITEM_SV__

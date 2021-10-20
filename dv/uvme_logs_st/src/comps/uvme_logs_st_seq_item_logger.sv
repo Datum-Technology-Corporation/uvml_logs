@@ -57,7 +57,7 @@ function void uvme_logs_st_seq_item_logger_c::write(uvme_logs_st_seq_item_c t);
    string  data    = t.we ? $sformatf("%h", t.wdata) : $sformatf("%h", t.rdata);
    
    `uvm_info("SEQ_ITEM_LOGGER", $sformatf("Printing transaction to file:\n%s", t.sprint()), UVM_LOW)
-   fwrite($sformatf("     %0t     | %s | %s | %s", $realtime(), access, address, data));
+   fwrite($sformatf(" %t | %s | %s | %s", $realtime(), access, address, data));
    
 endfunction : write
 
@@ -65,9 +65,9 @@ endfunction : write
 function void uvme_logs_st_seq_item_logger_c::print_header();
    
    `uvm_info("SEQ_ITEM_LOGGER", "Printing transation log header to file", UVM_LOW)
-   fwrite("----------------------------");
-   fwrite("     TIME     | R/W | ADDRESS | DATA");
-   fwrite("----------------------------");
+   fwrite("--------------------------------------");
+   fwrite("        TIME        | R/W |  ADDRESS | DATA");
+   fwrite("--------------------------------------");
    
 endfunction : print_header
 

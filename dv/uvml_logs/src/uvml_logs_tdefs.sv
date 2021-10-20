@@ -14,7 +14,15 @@
 `define __UVML_LOGS_TDEFS_SV__
 
 
-
+/**
+ * 
+ */
+typedef enum {
+   UVML_LOGS_FORMAT_TEXT, ///< 
+   UVML_LOGS_FORMAT_JSON, ///< 
+   UVML_LOGS_FORMAT_XML , ///< 
+   UVML_LOGS_FORMAT_YAML  ///< 
+} uvml_logs_format_enum;
 
 
 `endif // __UVML_LOGS_TDEFS_SV__
