@@ -58,7 +58,7 @@ function uvml_metadata_t uvme_logs_st_mon_trn_c::get_metadata();
    string enum_str     = enum_val.name();
    string raw_data_str = $sformatf("%b", raw_data);
    
-   get_metadata["number"] = '{
+   get_metadata[0] = '{
       index     : 0,
       value     : number_str,
       col_name  : "number",
@@ -67,7 +67,7 @@ function uvml_metadata_t uvme_logs_st_mon_trn_c::get_metadata();
       data_type : UVML_FIELD_INT
    };
    
-   get_metadata["enum"] = '{
+   get_metadata[1] = '{
       index     : 1,
       value     : enum_str,
       col_name  : "enum",
@@ -76,7 +76,7 @@ function uvml_metadata_t uvme_logs_st_mon_trn_c::get_metadata();
       data_type : UVML_FIELD_ENUM
    };
    
-   get_metadata["raw_data"] = '{
+   get_metadata[2] = '{
       index     : 2,
       value     : raw_data_str,
       col_name  : "raw_data",
