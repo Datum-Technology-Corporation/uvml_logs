@@ -65,15 +65,6 @@ function uvml_metadata_t uvme_logs_st_seq_item_c::get_metadata();
    string be_str    = $sformatf("%b", be);
    
    get_metadata[0] = '{
-      index     : 0,
-      value     : we_str,
-      col_name  : "we",
-      col_width : 4,
-      col_align : UVML_TEXT_ALIGN_RIGHT,
-      data_type : UVML_FIELD_INT
-   };
-   
-   get_metadata[] = '{
       index     : 1,
       value     : addr_str,
       col_name  : "addr",
@@ -82,7 +73,25 @@ function uvml_metadata_t uvme_logs_st_seq_item_c::get_metadata();
       data_type : UVML_FIELD_INT
    };
    
-   get_metadata[3]= '{
+   get_metadata[1] = '{
+      index     : 0,
+      value     : we_str,
+      col_name  : "we",
+      col_width : 4,
+      col_align : UVML_TEXT_ALIGN_RIGHT,
+      data_type : UVML_FIELD_INT
+   };
+   
+   get_metadata[2] = '{
+      index     : 4,
+      value     : be_str,
+      col_name  : "be",
+      col_width :  6,
+      col_align : UVML_TEXT_ALIGN_RIGHT,
+      data_type : UVML_FIELD_INT
+   };
+   
+   get_metadata[3] = '{
       index     : 2,
       value     : wdata_str,
       col_name  : "wdata",
@@ -96,15 +105,6 @@ function uvml_metadata_t uvme_logs_st_seq_item_c::get_metadata();
       value     : rdata_str,
       col_name  : "rdata",
       col_width :  10,
-      col_align : UVML_TEXT_ALIGN_RIGHT,
-      data_type : UVML_FIELD_INT
-   };
-   
-   get_metadata[2] = '{
-      index     : 4,
-      value     : be_str,
-      col_name  : "be",
-      col_width :  6,
       col_align : UVML_TEXT_ALIGN_RIGHT,
       data_type : UVML_FIELD_INT
    };
