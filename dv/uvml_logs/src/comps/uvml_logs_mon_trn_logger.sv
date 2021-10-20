@@ -132,7 +132,6 @@ function void uvml_logs_mon_trn_logger_c::build_phase(uvm_phase phase);
    //`endif
       cli_args_result = ".";
    end
-   cli_args_result = "/home/dpoulin/git/uvml_logs/sim/results/uvmt_logs_st_traffic_test_1";
    
 endfunction : build_phase
 
