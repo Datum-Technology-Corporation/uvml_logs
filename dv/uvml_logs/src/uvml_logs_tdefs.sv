@@ -21,7 +21,8 @@ typedef enum {
    UVML_LOGS_FORMAT_TEXT, ///< 
    UVML_LOGS_FORMAT_JSON, ///< 
    UVML_LOGS_FORMAT_XML , ///< 
-   UVML_LOGS_FORMAT_YAML  ///< 
+   UVML_LOGS_FORMAT_YAML, ///< 
+   UVML_LOGS_FORMAT_RAW   ///< 
 } uvml_logs_format_enum;
 
 

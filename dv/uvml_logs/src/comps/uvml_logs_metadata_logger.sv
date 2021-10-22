@@ -82,6 +82,11 @@ class uvml_logs_metadata_logger_c #(
    extern function void log_yaml(ref uvml_metadata_t metadata);
    
    /**
+    * TODO Describe uvml_logs_metadata_logger_c::log_raw()
+    */
+   extern function void log_raw(ref uvml_metadata_t metadata);
+   
+   /**
     * TODO Describe uvml_logs_metadata_logger_c::get_file_name()
     */
    extern function string get_file_name();
@@ -162,6 +167,7 @@ function void uvml_logs_metadata_logger_c::write(T_TRN t);
       UVML_LOGS_FORMAT_JSON: log_json(metadata);
       UVML_LOGS_FORMAT_XML : log_xml (metadata);
       UVML_LOGS_FORMAT_YAML: log_yaml(metadata);
+      UVML_LOGS_FORMAT_RAW : log_raw (metadata);
       
       default: begin
          `uvm_fatal("MON_TRN_LOGGER", $sformatf("Invalid format: %s", format.name()))
@@ -237,6 +243,13 @@ function void uvml_logs_metadata_logger_c::log_yaml(ref uvml_metadata_t metadata
    `uvm_warning("MON_TRN_LOGGER", "YAML logging not yet implemented")
    
 endfunction : log_yaml
+
+
+function void uvml_logs_metadata_logger_c::log_raw(ref uvml_metadata_t metadata);
+   
+   `uvm_warning("MON_TRN_LOGGER", "RAW logging not yet implemented")
+   
+endfunction : log_raw
 
 
 function string uvml_logs_metadata_logger_c::get_file_name();
