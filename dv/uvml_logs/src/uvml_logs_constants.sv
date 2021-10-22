@@ -15,6 +15,7 @@
 
 
 const string uvml_logs_default_trn_log_dir_name = "trn_log";
+const string uvml_logs_default_trn_fextension = "log";
 
 const string  uvml_logs_file_extensions[uvml_logs_format_enum] = '{
    UVML_LOGS_FORMAT_TEXT : "log" ,
@@ -23,8 +24,12 @@ const string  uvml_logs_file_extensions[uvml_logs_format_enum] = '{
    UVML_LOGS_FORMAT_YAML : "yaml"
 };
 
+
+/**
+ * WARNING Vivado has a bug with $value$plusargs where it will only accept hardcoded strings. So this is here only for
+ * reference
+ */
 const string uvml_logs_default_sim_dir_cli_arg = "TRN_LOG_DIR";
-const string uvml_logs_default_trn_fextension = "log";
 
 
 `endif // __UVML_LOGS_CONSTANTS_SV__

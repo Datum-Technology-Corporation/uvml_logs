@@ -125,12 +125,12 @@ function void uvml_logs_seq_item_logger_c::build_phase(uvm_phase phase);
    end
    
    // Retrieve simulation path from CLI argument
-   `ifndef UVM_NO_DPI
-   if (!uvm_cmdline_proc.get_arg_value({"+", cli_args}, cli_args_result)) begin
-   `else
-   if (!$value$plusargs({cli_args, "=%s"}, cli_args_result)) begin
-   `endif
-      cli_args_result = ".";
+   //if (!uvm_cmdline_proc.get_arg_value({"+", cli_args}, cli_args_result)) begin
+   if ($value$plusargs("UVML_FILE_BASE_DIR_TEST_RESULTS=%s", cli_args_result)) begin
+      `uvm_info("MON_TRN_LOGGER", $sformatf("Value for %s is %s", "UVML_FILE_BASE_DIR_TEST_RESULTS", cli_args_result), UVM_DEBUG)
+   end
+   else begin
+      `uvm_warning("MON_TRN_LOGGER", $sformatf("Could not find %s", "UVML_FILE_BASE_DIR_TEST_RESULTS"))
    end
    
 endfunction : build_phase
