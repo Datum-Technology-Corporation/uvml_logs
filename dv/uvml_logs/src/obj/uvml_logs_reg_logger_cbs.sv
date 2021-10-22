@@ -20,25 +20,23 @@
 class uvml_logs_reg_logger_cbs_c extends uvm_reg_cbs;
    
    // IO constants
-   string  cli_args  = "SIM_DIR_RESULTS";
-   string  fname     = "reg.log";
+   string  fname = "reg.log";
    
    // IO variables
-   bit           fopen_attempted = 0;
-   bit           fhandle_valid   = 0;
-   int unsigned  fhandle         = 0;
-   string        cli_args_result = "";
-   string        fpath           = "";
+   bit           fopen_attempted   = 0;
+   bit           fhandle_valid     = 0;
+   int unsigned  fhandle           = 0;
+   string        test_results_path = "";
+   string        fpath             = "";
    
    
    `uvm_object_utils_begin(uvml_logs_reg_logger_cbs_c)
-     `uvm_field_string(cli_args, UVM_DEFAULT)
-     `uvm_field_string(fname   , UVM_DEFAULT)
+     `uvm_field_string(fname, UVM_DEFAULT)
      
-     `uvm_field_int   (fhandle_valid  , UVM_DEFAULT)
-     `uvm_field_int   (fhandle        , UVM_DEFAULT)
-     `uvm_field_string(cli_args_result, UVM_DEFAULT)
-     `uvm_field_string(fpath          , UVM_DEFAULT)
+     `uvm_field_int   (fhandle_valid    , UVM_DEFAULT)
+     `uvm_field_int   (fhandle          , UVM_DEFAULT)
+     `uvm_field_string(test_results_path, UVM_DEFAULT)
+     `uvm_field_string(fpath            , UVM_DEFAULT)
    `uvm_object_utils_end
    
    
@@ -82,12 +80,8 @@ endclass
 
 function uvml_logs_reg_logger_cbs_c::new(string name="uvml_logs_reg_logger_cbs");
    
-   uvm_cmdline_processor  cli_proc = uvm_cmdline_processor::get_inst();
-   
    super.new(name);
-   
-   // Retrieve simulation path from CLI argument
-   void'(cli_proc.get_arg_value({"+", cli_args}, cli_args_result));
+   test_results_path = uvml_file_c::get_cli_path(UVML_FILE_BASE_DIR_TEST_RESULTS);
    
 endfunction : new
 
@@ -195,7 +189,7 @@ function void uvml_logs_reg_logger_cbs_c::fopen();
       fopen_attempted = 1;
       
       // Assemble final path
-      fpath = {cli_args_result, "/", fname};
+      fpath = {test_results_path, "/", fname};
       
       // Open file handle and check validity
       fhandle       = $fopen(fpath, "w");

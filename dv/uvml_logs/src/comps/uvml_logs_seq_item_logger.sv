@@ -35,11 +35,11 @@ class uvml_logs_seq_item_logger_c#(
    string  fextension = uvml_logs_default_trn_fextension  ;
    
    // IO variables
-   bit           fhandle_valid   = 0;
-   int unsigned  fhandle         = 0;
-   string        cli_args_result = "";
-   string        fpath           = "";
-   string        name            = "";
+   bit           fhandle_valid     = 0;
+   int unsigned  fhandle           = 0;
+   string        test_results_path = "";
+   string        fpath             = "";
+   string        name              = "";
    
    
    `uvm_component_param_utils_begin(uvml_logs_seq_item_logger_c#(T_TRN, T_CFG, T_CNTXT))
@@ -50,11 +50,11 @@ class uvml_logs_seq_item_logger_c#(
       `uvm_field_string(sub_dir   , UVM_DEFAULT)
       `uvm_field_string(fextension, UVM_DEFAULT)
       
-      `uvm_field_int   (fhandle_valid  , UVM_DEFAULT)
-      `uvm_field_int   (fhandle        , UVM_DEFAULT)
-      `uvm_field_string(cli_args_result, UVM_DEFAULT)
-      `uvm_field_string(fpath          , UVM_DEFAULT)
-      `uvm_field_string(name           , UVM_DEFAULT)
+      `uvm_field_int   (fhandle_valid    , UVM_DEFAULT)
+      `uvm_field_int   (fhandle          , UVM_DEFAULT)
+      `uvm_field_string(test_results_path, UVM_DEFAULT)
+      `uvm_field_string(fpath            , UVM_DEFAULT)
+      `uvm_field_string(name             , UVM_DEFAULT)
    `uvm_component_utils_end
    
    
@@ -106,6 +106,7 @@ endclass : uvml_logs_seq_item_logger_c
 function uvml_logs_seq_item_logger_c::new(string name="uvml_logs_seq_item_logger", uvm_component parent=null);
    
    super.new(name, parent);
+   test_results_path = uvml_file_c::get_cli_path(UVML_FILE_BASE_DIR_TEST_RESULTS);
    
 endfunction : new
 
@@ -124,15 +125,6 @@ function void uvml_logs_seq_item_logger_c::build_phase(uvm_phase phase);
       `uvm_fatal("CNTXT", "Context handle is null")
    end
    
-   // Retrieve simulation path from CLI argument
-   //if (!uvm_cmdline_proc.get_arg_value({"+", cli_args}, cli_args_result)) begin
-   if ($value$plusargs("UVML_FILE_BASE_DIR_TEST_RESULTS=%s", cli_args_result)) begin
-      `uvm_info("MON_TRN_LOGGER", $sformatf("Value for %s is %s", "UVML_FILE_BASE_DIR_TEST_RESULTS", cli_args_result), UVM_DEBUG)
-   end
-   else begin
-      `uvm_warning("MON_TRN_LOGGER", $sformatf("Could not find %s", "UVML_FILE_BASE_DIR_TEST_RESULTS"))
-   end
-   
 endfunction : build_phase
 
 
@@ -144,10 +136,10 @@ function void uvml_logs_seq_item_logger_c::end_of_elaboration_phase(uvm_phase ph
    
    // Assemble final path
    if (name == "") begin
-      fpath = {cli_args_result, "/", sub_dir, "/", parent.get_full_name(), ".seq_item.", fextension};
+      fpath = {test_results_path, "/", sub_dir, "/", parent.get_full_name(), ".seq_item.", fextension};
    end
    else begin
-      fpath = {cli_args_result, "/", sub_dir, "/", parent.get_full_name(), name, ".seq_item.", fextension};
+      fpath = {test_results_path, "/", sub_dir, "/", parent.get_full_name(), name, ".seq_item.", fextension};
    end
    
    // Opem file handle and check 
