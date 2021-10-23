@@ -21,8 +21,8 @@ The Moore.io UVM Logging Library is a crucial component to any modern digital de
 
 ## Management
 
-| **[Issues](https://github.com/Datum-Technology-Corporation/uvml_logsl/issues)** | **[Discussions](https://github.com/Datum-Technology-Corporation/uvml_logsl/discussions)** |
-| **[Projects](https://github.com/Datum-Technology-Corporation/uvml_logsl/projects)** | **[Wiki](https://github.com/Datum-Technology-Corporation/uvml_logsl/wiki)** |
+| **[Issues](https://github.com/Datum-Technology-Corporation/uvml_logs/issues)** | **[Discussions](https://github.com/Datum-Technology-Corporation/uvml_logs/discussions)** |
+| **[Projects](https://github.com/Datum-Technology-Corporation/uvml_logs/projects)** | **[Wiki](https://github.com/Datum-Technology-Corporation/uvml_logs/wiki)** |
 
 
 ## Metrics
