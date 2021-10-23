@@ -6,7 +6,7 @@
 ----------------
 
 ## About
-The Moore.io UVM Logging Library is a crucial component to any modern digital design simulation.  This project consists the library itself (`uvml_logs_pkg`), the self-test UVM environment (`uvme_logs_st`) and the self-test UVM Test bench (`uvmt_logs_st`).
+The [Moore.io](www.mooreio.com) UVM Logging Library is a crucial component to any modern digital design simulation.  This project consists the library itself (`uvml_logs_pkg`), the self-test UVM environment (`uvme_logs_st`) and the self-test UVM Test bench (`uvmt_logs_st`).
 
 
 ## Downloads
