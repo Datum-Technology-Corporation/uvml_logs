@@ -12,12 +12,42 @@ The Moore.io UVM Logging Library is a crucial component to any modern digital de
 
 
 # Simulation
+**1. Change directory to 'sim'**
+
+This is from where all jobs will be launched.
 ```
 cd ./sim
-cat ./README.md
+```
+
+**2. Project Setup**
+
+Only needs to be done once, or when libraries must be updated. This will pull in dependencies from the web.
+```
 ./setup_project.py
+```
+
+**3. Terminal Setup**
+
+This must be done per terminal. The script included in this project is for bash:
+
+```
+export VIVADO=/path/to/vivado/bin # Set locaton of Vivado installation
 source ./setup_terminal.sh
-export VIVADO=/path/to/vivado/install
+```
+
+**4. Launch**
+
+All jobs for simulation are performed via `dvm`.
+
+> At any time, you can invoke its built-in documentation:
+
+```
 dvm --help
+```
+
+> To run test 'traffic' with seed '1' and wave capture enabled:
+
+
+```
 clear && dvm all uvmt_logs_st -t traffic -s 1
 ```
