@@ -9,6 +9,12 @@
 The [Moore.io](https://www.mooreio.com) UVM Logging Library is a crucial component to any modern digital design simulation.  This project consists the library itself (`uvml_logs_pkg`), the self-test UVM environment (`uvme_logs_st`) and the self-test UVM Test bench (`uvmt_logs_st`).
 
 
+## Management
+
+| **[Issues](https://github.com/Datum-Technology-Corporation/uvml_logs/issues)** | **[Discussions](https://github.com/Datum-Technology-Corporation/uvml_logs/discussions)** |
+| **[Sub-Projects](https://github.com/Datum-Technology-Corporation/uvml_logs/projects)** | **[Wiki](https://github.com/Datum-Technology-Corporation/uvml_logs/wiki)** |
+
+
 ## Downloads
 
 | Latest Release (v1.0 Beta 0) | Stable (Nightly) | Stable (Weekly) |
@@ -18,11 +24,6 @@ The [Moore.io](https://www.mooreio.com) UVM Logging Library is a crucial compone
 
 > **[View All Releases](TODO)**
 
-
-## Management
-
-| **[Issues](https://github.com/Datum-Technology-Corporation/uvml_logs/issues)** | **[Discussions](https://github.com/Datum-Technology-Corporation/uvml_logs/discussions)** |
-| **[Projects](https://github.com/Datum-Technology-Corporation/uvml_logs/projects)** | **[Wiki](https://github.com/Datum-Technology-Corporation/uvml_logs/wiki)** |
 
 
 ## Metrics
