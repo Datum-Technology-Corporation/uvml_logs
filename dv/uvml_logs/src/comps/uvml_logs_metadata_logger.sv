@@ -153,6 +153,11 @@ function void uvml_logs_metadata_logger_c::write(T_TRN t);
    string           final_file_name;
    uvml_metadata_t  metadata       ;
    
+   metadata = t.get_metadata();
+   if (metadata.size() == 0) begin
+      return;
+   end
+   
    if (!file_is_open) begin
       final_file_name = {file_name, ".", get_file_extension()};
       file = uvml_file_c::type_id::create("file");
@@ -161,7 +166,6 @@ function void uvml_logs_metadata_logger_c::write(T_TRN t);
       file.open(UVM_WRITE);
    end
    
-   metadata = t.get_metadata();
    case (format)
       UVML_LOGS_FORMAT_TEXT: log_text(metadata);
       UVML_LOGS_FORMAT_JSON: log_json(metadata);
