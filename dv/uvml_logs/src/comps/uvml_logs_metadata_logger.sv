@@ -158,6 +158,11 @@ function void uvml_logs_metadata_logger_c::write(T_TRN t);
       return;
    end
    
+   `uvm_info("MON_TRN_LOGGER", $sformatf("Trying to log metadata (%0d entries)", metadata.size()), UVM_DEBUG)
+   foreach (metadata[ii]) begin
+      `uvm_info("MON_TRN_LOGGER", $sformatf("metadata[%0d]: %4p", ii, metadata[ii]), UVM_DEBUG)
+   end
+   
    if (!file_is_open) begin
       final_file_name = {file_name, ".", get_file_extension()};
       file = uvml_file_c::type_id::create("file");
@@ -197,7 +202,12 @@ function void uvml_logs_metadata_logger_c::log_text(ref uvml_metadata_t metadata
       // Print column headers
       file.write("        TIME        ");
       foreach (metadata[ii]) begin
-         padding_len = metadata[ii].col_width - metadata[ii].col_name.len();
+         if (metadata[ii].col_name.len() > metadata[ii].col_width) begin
+            padding_len = 2;
+         end
+         else begin
+            padding_len = metadata[ii].col_width - metadata[ii].col_name.len();
+         end
          col_padding_left  = $rtoi($floor($itor(padding_len)/2.00));
          col_padding_right = $rtoi($ceil ($itor(padding_len)/2.00));
          col_padding_left_str  = {col_padding_left {" "}};
@@ -216,9 +226,18 @@ function void uvml_logs_metadata_logger_c::log_text(ref uvml_metadata_t metadata
    time_format_spec = {" %", $sformatf("%0d", time_col_width), "t "};
    file.write($sformatf(time_format_spec, $realtime()));
    foreach (metadata[ii]) begin
-      padding_len = metadata[ii].col_width - metadata[ii].value.len();
+      if (metadata[ii].value.len() > metadata[ii].col_width) begin
+         padding_len = 2;
+      end
+      else begin
+         padding_len = metadata[ii].col_width - metadata[ii].value.len();
+      end
       col_padding_left  = $rtoi($floor($itor(padding_len)/2.00));
       col_padding_right = $rtoi($ceil ($itor(padding_len)/2.00));
+      `uvm_info("LOGS_METADATA_LOGGER",$sformatf(
+         "col_width=%0d value.len()=%0d padding_len=%0d col_padding_left=%0d col_padding_right=%0d",
+         metadata[ii].col_width, metadata[ii].value.len(), padding_len, col_padding_left, col_padding_right
+      ), UVM_DEBUG)
       col_padding_left_str  = {col_padding_left {" "}};
       col_padding_right_str = {col_padding_right{" "}};
       file.write({"|", col_padding_left_str, metadata[ii].value, col_padding_right_str});
@@ -303,7 +322,6 @@ function string uvml_logs_metadata_logger_c::get_file_extension();
    return uvml_logs_file_extensions[format];
    
 endfunction : get_file_extension
-
 
 
 `endif // __UVML_LOGS_METADATA_LOGGER_SV__
