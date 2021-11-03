@@ -1,0 +1,42 @@
+ip:
+  name: "uvme_logs_st"
+  version: "1.0.0 Beta 0"
+  full-name: "Moore.io CLI Testing Grounds UVM Environment"
+  type: "DV"
+  sub-type: "UVM Environment"
+  sub-sub-type: "Agent Self-Testing"
+  description: >
+    
+  home-page: "https://datum-technology-corporation.github.io/uvml_logs/"
+  repo-uri: "https://github.com/Datum-Technology-Corporation/uvml_logs.git"
+  bugs: "https://github.com/Datum-Technology-Corporation/uvml_logs/issues"
+  aliases: []
+  logo: ""
+  block-diagram: ""
+  languages: ["sv"]
+  simulators-supported:
+    - { name: "vivado", version: "2021.1" }
+  tags: []
+  copyright-holders: ["Datum Technology Corporation"]
+  licenses: ["SHL-2.1"]
+
+structure:
+   scripts-paths : [ "/bin"      ]
+   docs-paths    : [ "/docs"     ]
+   examples-paths: [ "/examples" ]
+   src-paths     : [ "/src"      ]
+
+dependencies:
+  - { type: "DV", name: "uvm" , repo-uri: "https://github.com/Datum-Technology-Corporation/uvm.git" , repo-branch: "main", repo-path: "dv/uvm"  }
+  - { type: "DV", name: "uvml", repo-uri: "https://github.com/Datum-Technology-Corporation/uvml.git", repo-branch: "main", repo-path: "dv/uvml" }
+
+hdl-src:
+  directories: [".", "comps", "obj", "reg", "seq"]
+  flists:
+    metrics : [ "src/uvme_logs_st_pkg.flist"      ]
+    riviera : [ "src/uvme_logs_st_pkg.flist"      ]
+    questa  : [ "src/uvme_logs_st_pkg.flist"      ]
+    vcs     : [ "src/uvme_logs_st_pkg.flist"      ]
+    vivado  : [ "src/uvme_logs_st_pkg.flist.xsim" ]
+    xcelium : [ "src/uvme_logs_st_pkg.flist"      ]
+
