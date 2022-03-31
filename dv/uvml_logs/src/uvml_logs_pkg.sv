@@ -16,21 +16,21 @@
 
 // Pre-processor macros
 `include "uvm_macros.svh"
-`include "uvml_macros.sv"
+`include "uvml_macros.svh"
 
 
 /**
  * Encapsulates all the types needed for the Moore.io Logging Utilities library.
  */
 package uvml_logs_pkg;
-   
+
    import uvm_pkg ::*;
    import uvml_pkg::*;
-   
+
    // Constants / Structs / Enums
    `include "uvml_logs_tdefs.sv"
    `include "uvml_logs_constants.sv"
-   
+
    // Components
    `include "uvml_logs_reg_logger_cbs.sv"
    `include "uvml_logs_reg_logger_json_cbs.sv"
@@ -39,7 +39,7 @@ package uvml_logs_pkg;
    `include "uvml_logs_mon_trn_logger.sv"
    `include "uvml_logs_rs_json.sv"
    `include "uvml_logs_rs_text.sv"
-   
+
 endpackage : uvml_logs_pkg
 
 
