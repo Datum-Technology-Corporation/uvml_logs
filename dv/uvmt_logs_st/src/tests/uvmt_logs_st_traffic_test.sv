@@ -42,7 +42,7 @@ endfunction : new
 task uvmt_logs_st_traffic_test_c::main_phase(uvm_phase phase);
 
    super.main_phase(phase);
-`uvm_error("", "")
+
    phase.raise_objection(this);
    `uvm_info("TEST", $sformatf("Starting traffic virtual sequence:\n%s", traffic_vseq.sprint()), UVM_NONE)
    traffic_vseq.start(vsequencer);
