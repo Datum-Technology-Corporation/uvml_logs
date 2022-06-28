@@ -36,7 +36,7 @@ module uvml_logs_sim_summary;
          $display({`UVML_LOGS_RED, "\n", uvml_logs_sim_summary_banner_failed});
          if (sim_finished == 0) begin
             if (fatal_count > 0) begin
-               $display($sformatf(uvml_logs_sim_summary_sub_banner_failed_fatal, error_count));
+               $display($sformatf(uvml_logs_sim_summary_sub_banner_failed_fatal));
             end
             else begin
                $display($sformatf(uvml_logs_sim_summary_sub_banner_failed_aborted, error_count));
