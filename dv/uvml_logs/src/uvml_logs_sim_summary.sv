@@ -19,10 +19,10 @@ module uvml_logs_sim_summary;
     * End-of-test summary printout.
     */
    final begin
-      static int  error_count, fatal_count, warning_count;
-      bit         sim_finished;
+      static int                error_count, fatal_count, warning_count;
+      static bit                sim_finished;
+      static uvm_report_server  rs = uvm_top.get_report_server();
 
-      uvm_report_server  rs = uvm_top.get_report_server();
       error_count   = rs.get_severity_count(UVM_ERROR  );
       fatal_count   = rs.get_severity_count(UVM_FATAL  );
       warning_count = rs.get_severity_count(UVM_WARNING);
