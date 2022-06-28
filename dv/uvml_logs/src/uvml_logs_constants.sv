@@ -1,12 +1,5 @@
 // Copyright 2021 Datum Technology Corporation
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
-// Licensed under the Solderpad Hardware License v 2.1 (the "License"); you may not use this file except in compliance
-// with the License, or, at your option, the Apache License version 2.0.  You may obtain a copy of the License at
-//                                        https://solderpad.org/licenses/SHL-2.1/
-// Unless required by applicable law or agreed to in writing, any work distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations under the License.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -22,6 +15,45 @@ const string  uvml_logs_file_extensions[uvml_logs_format_enum] = '{
    UVML_LOGS_FORMAT_JSON : "json",
    UVML_LOGS_FORMAT_XML  : "xml" ,
    UVML_LOGS_FORMAT_YAML : "yaml"
+};
+
+const string uvml_logs_sim_summary_banner_passed = {
+"  _______ _______ _______ _______ _______ ______    \n",
+" |   _   |   _   |   _   |   _   |   _   |   _  \\   \n",
+" |   1   |   1   |   1___|   1___|   1___|   |   \\  \n",
+" |   ____|   _   |____   |____   |   __)_|   |    \\  \n",
+" |   |   |   |   |   1   |   1   |   1   |   1    /  \n",
+" |   |   |   |   |       |       |       |       /   \n",
+" `---'   `--- ---`-------`-------`-------`------'    "
+};
+const string uvml_logs_sim_summary_sub_banner_passed = {"\n",
+"--------------------------------------------------- \n",
+"           TEST PASSED WITH %0d WARNINGS            \n",
+"--------------------------------------------------- \n"
+};
+const string uvml_logs_sim_summary_banner_failed = {
+"    _______ _______ ___ ___     _______ ______      \n",
+"   |   _   |   _   |   |   |   |   _   |   _  \\     \n",
+"   |   0___|   0   |   |   |   |   0___|   |   \\    \n",
+"   |   __) |   _   |   |   |___|   __)_|   |    \\   \n",
+"   |   |   |   |   |   |   0   |   0   |   0    /   \n",
+"   |   |   |   |   |   |       |       |       /    \n",
+"   `---'   `--- ---`---`-------`-------`------'   "
+};
+const string uvml_logs_sim_summary_sub_banner_failed_aborted = {"\n",
+"--------------------------------------------------- \n",
+"       TEST FAILED - ABORTED AFTER %0d ERRORS       \n",
+"--------------------------------------------------- \n"
+};
+const string uvml_logs_sim_summary_sub_banner_failed_fatal = {"\n",
+"--------------------------------------------------- \n",
+"           TEST FAILED DUE TO FATAL ERROR           \n",
+"--------------------------------------------------- \n"
+};
+const string uvml_logs_sim_summary_sub_banner_failed = {"\n",
+"--------------------------------------------------- \n",
+"            TEST FAILED WITH %0d ERRORS             \n",
+"--------------------------------------------------- \n"
 };
 
 
