@@ -4,11 +4,11 @@
 
 
 // Directories
--i ${DV_UVME_LOGS_ST_SRC_PATH}
--i ${DV_UVME_LOGS_ST_SRC_PATH}/comps
--i ${DV_UVME_LOGS_ST_SRC_PATH}/obj
--i ${DV_UVME_LOGS_ST_SRC_PATH}/reg
--i ${DV_UVME_LOGS_ST_SRC_PATH}/seq
+-i ${UVME_LOGS_ST_SRC_PATH}
+-i ${UVME_LOGS_ST_SRC_PATH}/comps
+-i ${UVME_LOGS_ST_SRC_PATH}/obj
+-i ${UVME_LOGS_ST_SRC_PATH}/reg
+-i ${UVME_LOGS_ST_SRC_PATH}/seq
 
 // Files
-${DV_UVME_LOGS_ST_SRC_PATH}/uvme_logs_st_pkg.sv
+${UVME_LOGS_ST_SRC_PATH}/uvme_logs_st_pkg.sv

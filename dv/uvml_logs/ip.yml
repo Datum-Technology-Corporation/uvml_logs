@@ -15,29 +15,29 @@ ip:
   block-diagram: ""
   languages: ["sv"]
   simulators-supported:
-    - { name: "vivado", version: "2021.1" }
+    - { name: "vivado", version: "2022.1" }
   tags: []
   copyright-holders: ["Datum Technology Corporation"]
   licenses: ["SHL-2.1"]
 
 structure:
-   scripts-paths : [ "bin"      ]
-   docs-paths    : [ "docs"     ]
-   examples-paths: [ "examples" ]
-   src-paths     : [ "src"      ]
+   scripts-path : "bin"
+   docs-path    : "docs"
+   examples-path: "examples"
+   src-path     : "src"
 
 dependencies:
-  - { type: "DV", name: "uvm" , repo-uri: "https://github.com/Datum-Technology-Corporation/uvm.git" , repo-branch: "main", repo-path: "dv/uvm"       }
-  - { type: "DV", name: "uvml", repo-uri: "https://github.com/Datum-Technology-Corporation/uvml.git", repo-branch: "main", repo-path: "dv/uvml"      }
-
+  - { name: "uvm", version: "1.2" }
+  - { name: "uvml", version: "~1.0" }
+ 
 hdl-src:
   directories: [".", "comps", "obj"]
   tests-name-template: ""
-  flists:
-    metrics : [ "src/uvml_logs_pkg.flist"      ]
-    riviera : [ "src/uvml_logs_pkg.flist"      ]
-    questa  : [ "src/uvml_logs_pkg.flist"      ]
-    vcs     : [ "src/uvml_logs_pkg.flist"      ]
-    vivado  : [ "src/uvml_logs_pkg.flist.xsim" ]
-    xcelium : [ "src/uvml_logs_pkg.flist"      ]
+  flist:
+    metrics : "uvml_logs_pkg.flist"
+    riviera : "uvml_logs_pkg.flist"
+    questa  : "uvml_logs_pkg.flist"
+    vcs     : "uvml_logs_pkg.flist"
+    vivado  : "uvml_logs_pkg.flist.xsim"
+    xcelium : "uvml_logs_pkg.flist"
 

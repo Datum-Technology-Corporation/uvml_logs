@@ -4,18 +4,18 @@
 
 
 // Libraries
--f ${DV_UVM_SRC_PATH}/uvm_pkg.flist
--f ${DV_UVML_SRC_PATH}/uvml_pkg.flist
--f ${DV_UVML_LOGS_SRC_PATH}/uvml_logs_pkg.flist
+-f ${UVM_SRC_PATH}/uvm_pkg.flist
+-f ${UVML_SRC_PATH}/uvml_pkg.flist
+-f ${UVML_LOGS_SRC_PATH}/uvml_logs_pkg.flist
 
 // Environments
--f ${DV_UVME_LOGS_ST_SRC_PATH}/uvme_logs_st_pkg.flist
+-f ${UVME_LOGS_ST_SRC_PATH}/uvme_logs_st_pkg.flist
 
 // Logging Utilities test bench Directories
-+incdir+${DV_UVMT_LOGS_ST_SRC_PATH}
-+incdir+${DV_UVMT_LOGS_ST_SRC_PATH}/seq
-+incdir+${DV_UVMT_LOGS_ST_SRC_PATH}/tb
-+incdir+${DV_UVMT_LOGS_ST_SRC_PATH}/tests
++incdir+${UVMT_LOGS_ST_SRC_PATH}
++incdir+${UVMT_LOGS_ST_SRC_PATH}/seq
++incdir+${UVMT_LOGS_ST_SRC_PATH}/tb
++incdir+${UVMT_LOGS_ST_SRC_PATH}/tests
 
 // Logging Utilities tests (includes constants/macros/types meant for test bench)
-${DV_UVMT_LOGS_ST_SRC_PATH}/uvmt_logs_st_pkg.sv
+${UVMT_LOGS_ST_SRC_PATH}/uvmt_logs_st_pkg.sv

@@ -38,7 +38,5 @@ package uvml_logs_pkg;
 
 endpackage : uvml_logs_pkg
 
-`include "uvml_logs_sim_summary.sv"
-
 
 `endif // __UVML_LOGS_PKG_SV__
