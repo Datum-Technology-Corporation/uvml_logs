@@ -5,12 +5,10 @@
 ########################################################################################################################
 
 
-# Launched from uvml project sim dir
-shopt -s expand_aliases
-source ~/.bashrc
-mio cpel    uvmt_logs_st
-mio sim     uvmt_logs_st -t traffic -s 1 -c
-mio sim     uvmt_logs_st -t reg     -s 1 -c
-mio sim     uvmt_logs_st -t rs      -s 1 -c
+# Launched from uvml_logs project sim dir
+mio sim     uvmt_logs_st -CE
+mio sim     uvmt_logs_st -S -t traffic -s 1 -c
+mio sim     uvmt_logs_st -S -t reg     -s 1 -c
+mio sim     uvmt_logs_st -S -t rs      -s 1 -c
 mio results uvmt_logs_st results
 mio cov     uvmt_logs_st
